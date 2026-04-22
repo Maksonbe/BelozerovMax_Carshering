@@ -2,9 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Каршеринг - Система управления" 
-        Height="650" Width="850"
+        Height="650" Width="500"
         WindowStartupLocation="CenterScreen"
-        MinHeight="550" MinWidth="750">
+        MinHeight="650" MinWidth="500">
 
     <Grid>
         <Frame Name="MainFrame" NavigationUIVisibility="Hidden"/>
