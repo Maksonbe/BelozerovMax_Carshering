@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarharingApp.Views"
         mc:Ignorable="d"
-        Title="Авторизация" Height="650" Width="500"
+        Title="Авторизация" Height="750" Width="500"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResize"
         Background="AliceBlue">
@@ -18,8 +18,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Margin="0,0,0,20">
@@ -30,7 +29,7 @@
             <TextBlock Text="Вход в систему"
                        FontSize="15"
                        HorizontalAlignment="Center"
-                       Foreground="Black"
+                       Foreground="RosyBrown"
                        Margin="0,5,0,0"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Margin="0,0,0,15">
@@ -51,17 +50,61 @@
                      Padding="10"
                      FontSize="14"/>
         </StackPanel>
-        <Button Name="LoginButton"
+        
+        <Button 
+            
+            Name="LoginButton"
             Grid.Row="3" 
             Content="Войти"
             Background="Beige"
             Foreground="RosyBrown"
-                Margin="5"/>
+                Margin="5"
+                />
         <Button Name="ChangePassword" Grid.Row="4"
-                Margin="5,7,5,0"
+                Margin="5,7,5,10"
                 Content="Забыл пароль"
                 Background="Beige"
                 Foreground="RosyBrown"/>
+        <Border Grid.Row="5"
+                BorderBrush="#CBD5E0" 
+                BorderThickness="1" 
+                CornerRadius="10" 
+                Padding="15" 
+                Margin="0,0,0,15"
+                Background="White">
+
+            <StackPanel Grid.Row="6">
+                <TextBlock Text="СОБЕРИТЕ ПАЗЛ" 
+                           FontWeight="Bold" 
+                           HorizontalAlignment="Center" 
+                           Margin="0,0,0,10"
+                           Foreground="Aquamarine"/>
+
+                <UniformGrid Name="PuzzleGrid" 
+                             Rows="2" 
+                             Columns="2" 
+                             Width="200" 
+                             Height="200" 
+                             HorizontalAlignment="Center"
+                             Margin="0,0,0,10"/>
+
+                <TextBlock Name="PuzzleStatusText" 
+                           Text="Пазл не собран" 
+                           Foreground="Red" 
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Margin="0,5,0,0"/>
+            </StackPanel>
+        </Border>
+        <Button Name="TestApi" 
+                Grid.Row="7"
+                Content="ТЕСТ API" 
+                Height="40" 
+                FontSize="12"
+                Background="Beige" 
+                Foreground="RosyBrown"
+                Margin="0,0,0,15"
+                Cursor="Hand"/>
     </Grid>
 
 </Window>

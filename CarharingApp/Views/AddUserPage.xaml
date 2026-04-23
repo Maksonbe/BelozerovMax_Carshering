@@ -7,7 +7,44 @@
         mc:Ignorable="d"
         Title="Добавить пользователя" Height="650" Width="500"
         Background="AliceBlue">
-    <Grid>
-        
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1">
+            <TextBlock Grid.Row="0"
+                       Text="Добавить пользователя"
+                       HorizontalAlignment="Center"
+                       FontSize="30"
+                       FontWeight="Bold"
+                       Foreground="Aquamarine"
+                       Margin="0,0,0,20"/>
+            <TextBlock Text="ФИО пользователя"
+                       Foreground="Aquamarine"
+                       FontWeight="Bold"/>
+            <TextBox Name="FullName" Margin="0,1,5,20"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <TextBlock Text="Номер пользователя"
+                       Foreground="Aquamarine"
+                       FontWeight="Bold"/>
+            <TextBox Name="number" Margin="0,1,5,20"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3">
+            <TextBlock Text="Пароль"
+                       Foreground="Aquamarine"
+                       FontWeight="Bold"/>
+            <TextBox Name="Password"
+                     Margin="0,1,5,30"/>
+
+        </StackPanel>
+        <Button Grid.Row="4"  Content="Добавить пользователя"
+                Foreground="RosyBrown"
+                Background="Beige"/>
     </Grid>
 </Window>

@@ -5,9 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarharingApp.Views"
         mc:Ignorable="d"
-        Title="AdminPage" Height="650" Width="500"
+        Title="Администратор" Height="650" Width="500"
         Background="AliceBlue">
-    <Grid>
-        
-    </Grid>
+    <StackPanel Margin="30">
+        <DataGrid>
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="auto" Header="ФИО" Binding="{Binding full_name}"/>
+                <DataGridTextColumn Width="auto" Header="Номер" Binding="{Binding number}"/>
+                <DataGridTextColumn Width="auto" Header="Роль" Binding="{Binding role}"/>
+                <DataGridTextColumn Width="auto" Header="Заблокирован" Binding="{Binding blocked}"/>
+            </DataGrid.Columns>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Администратор"/>
+            </Grid>
+        </DataGrid>
+    </StackPanel>
 </Window>
