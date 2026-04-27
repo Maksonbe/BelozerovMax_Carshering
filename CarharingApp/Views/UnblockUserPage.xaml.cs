@@ -23,5 +23,17 @@ namespace CarharingApp.Views
         {
             InitializeComponent();
         }
+
+        private void unblock_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Out5(object sender, RoutedEventArgs e)
+        {
+            AdminPage adminPage = new AdminPage();
+            adminPage.Show();
+            this.Close();
+        }
     }
 }

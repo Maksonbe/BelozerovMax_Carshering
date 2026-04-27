@@ -6,9 +6,11 @@
         xmlns:local="clr-namespace:CarharingApp.Views"
         mc:Ignorable="d"
         Title="Разблокировать пользователя" Height="650" Width="500"
-        Background="AliceBlue">
+        Background="AliceBlue"
+                WindowStartupLocation="CenterScreen">
     <Grid Margin="30">
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -21,20 +23,28 @@
                        FontWeight="Bold"
                        FontSize="29"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Margin="0,10,0,20">
+        <StackPanel Grid.Row="1" Margin="0,12,0,20">
             <TextBlock Text="номер пользователя"
                        Foreground="Aquamarine"
                        FontWeight="Bold"/>
             <TextBox Name="Unblock"
                      Height="30"
-                     Padding="10"
                      FontSize="14"/>
         </StackPanel>
         <Button Grid.Row="2" Name="unblock"
                 Content="Разблокировать"
                 Background="Beige"
                 Foreground="RosyBrown"
-                Margin="5,0,5,0"/>
-
+                Margin="5,0,5,0"
+                Height="30" Click="unblock_Click"/>
+        
+        <Button Grid.Row="3"
+                Name="Out"
+                Content="Назад"
+                Margin="5,10,5,0"
+                Height="30"
+                Background="Beige"
+                Foreground="RosyBrown"
+                Click="Out5"/>
     </Grid>
 </Window>

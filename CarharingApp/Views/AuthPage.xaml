@@ -15,7 +15,6 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
@@ -58,19 +57,16 @@
             Content="Войти"
             Background="Beige"
             Foreground="RosyBrown"
-                Margin="5"
+            Height="30"
+                Margin="5,0,0,20" Click="LoginButton_Click"
                 />
-        <Button Name="ChangePassword" Grid.Row="4"
-                Margin="5,7,5,10"
-                Content="Забыл пароль"
-                Background="Beige"
-                Foreground="RosyBrown"/>
+
         <Border Grid.Row="5"
                 BorderBrush="#CBD5E0" 
                 BorderThickness="1" 
                 CornerRadius="10" 
                 Padding="15" 
-                Margin="0,0,0,15"
+                Margin="0,0,0,10"
                 Background="White">
 
             <StackPanel Grid.Row="6">
@@ -99,12 +95,12 @@
         <Button Name="TestApi" 
                 Grid.Row="7"
                 Content="ТЕСТ API" 
-                Height="40" 
+                Height="30" 
                 FontSize="12"
                 Background="Beige" 
                 Foreground="RosyBrown"
                 Margin="0,0,0,15"
-                Cursor="Hand"/>
+                Cursor="Hand" Click="TestApi_Click"/>
     </Grid>
 
 </Window>

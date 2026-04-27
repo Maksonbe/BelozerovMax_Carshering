@@ -23,5 +23,12 @@ namespace CarharingApp.Views
         {
             InitializeComponent();
         }
+
+        private void Out2(object sender, RoutedEventArgs e)
+        {
+            AdminPage adminPage = new AdminPage(); 
+            adminPage.Show();
+            this.Close();
+        }
     }
 }

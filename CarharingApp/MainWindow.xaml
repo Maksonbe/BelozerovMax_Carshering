@@ -4,9 +4,9 @@
         Title="Каршеринг - Система управления" 
         Height="650" Width="500"
         WindowStartupLocation="CenterScreen"
-        MinHeight="650" MinWidth="500">
-
-    <Grid>
+        MinHeight="650" MinWidth="500"
+        Background="AliceBlue">
+    <Grid Margin="30">
         <Frame Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

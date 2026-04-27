@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace CarsharingApp.Helpers
+namespace CarharingApp.Helpers
 {
     public static class NavigationHelper
     {

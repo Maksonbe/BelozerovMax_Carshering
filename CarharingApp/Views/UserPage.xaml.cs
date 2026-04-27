@@ -23,5 +23,11 @@ namespace CarharingApp.Views
         {
             InitializeComponent();
         }
+        private void Out1(object sender, RoutedEventArgs e)
+        {
+            AuthPage authPage = new AuthPage();
+            authPage.Show();
+            this.Close();
+        }
     }
 }

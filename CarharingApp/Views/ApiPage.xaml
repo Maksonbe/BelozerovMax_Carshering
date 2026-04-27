@@ -6,9 +6,11 @@
         xmlns:local="clr-namespace:CarharingApp.Views"
         mc:Ignorable="d"
         Title="ApiPage" Height="650" Width="500"
-        Background="AliceBlue">
+        Background="AliceBlue"
+                WindowStartupLocation="CenterScreen">
     <Grid Margin="30">
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -24,11 +26,21 @@
                 Content="Получить данные"
                 Background="Beige"
                 Foreground="RosyBrown"
-                Margin="5,0,5,0"/>
+                Margin="5,0,5,0"
+                Height="30"/>
         <Button Grid.Row="2" Name="Api2"
                 Content="Отправить результат"
                 Background="Beige"
                 Foreground="RosyBrown"
-                Margin="5,10,5,0"/>
+                Margin="5,10,5,0"
+                Height="30"/>
+        <Button Grid.Row="3"
+                Name="Out"
+                Content="Назад"
+                Margin="5,10,5,0"
+                Height="30"
+                Background="Beige"
+                Foreground="RosyBrown"
+                Click="Out3"/>
     </Grid>
 </Window>

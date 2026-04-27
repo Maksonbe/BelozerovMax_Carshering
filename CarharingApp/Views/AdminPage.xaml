@@ -5,27 +5,111 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarharingApp.Views"
         mc:Ignorable="d"
-        Title="Администратор" Height="650" Width="500"
+        Title="Панель администратора" 
+        Height="650" 
+        Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
         Background="AliceBlue">
-    <StackPanel Margin="30">
-        <DataGrid>
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="auto" Header="ФИО" Binding="{Binding full_name}"/>
-                <DataGridTextColumn Width="auto" Header="Номер" Binding="{Binding number}"/>
-                <DataGridTextColumn Width="auto" Header="Роль" Binding="{Binding role}"/>
-                <DataGridTextColumn Width="auto" Header="Заблокирован" Binding="{Binding blocked}"/>
-            </DataGrid.Columns>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="Администратор"/>
-            </Grid>
-        </DataGrid>
-    </StackPanel>
+
+    <Grid Margin="30">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/> 
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Margin="0,0,0,20" 
+                       Text="Администратор" 
+                       FontSize="32"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Foreground="Aquamarine"/>
+
+        <StackPanel Grid.Row="1" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,15">
+
+            <Button Name="AddUserButton" 
+                    Content="Добавить пользователя" 
+                    Height="40"
+                    FontSize="12"
+                    Background="Beige" 
+                    Foreground="RosyBrown"
+                    Margin="0,0,10,0"
+                    Cursor="Hand"
+                    Click="AddUser"/>
+
+            <Button Name="UnblockUserButton" 
+                    Content="Разблокировать" 
+                    Background="Beige" 
+                    Foreground="RosyBrown"
+                    Margin="0,0,10,0"
+                    Cursor="Hand"
+                                        Click="UnBlock"/>
+            <Button Name="Change"
+                    Content="Изменить"
+                    Background="Beige"
+                    Foreground="RosyBrown"
+                    Cursor="Hand"
+                    />
+        </StackPanel>
+
+        <Border Grid.Row="3"
+                BorderBrush="#CBD5E0" 
+                BorderThickness="1" 
+                CornerRadius="10" 
+                Padding="10" 
+                Margin="0,0,0,15"
+                Background="White">
+
+            <DataGrid Name="UsersGrid" 
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      HeadersVisibility="Column"
+                      RowHeaderWidth="0"
+                      BorderThickness="0"
+                      FontSize="13">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ФИО" 
+                                        Binding="{Binding FullName}" 
+                                        Width="*"/>
+                    <DataGridTextColumn Header="Логин" 
+                                        Binding="{Binding Login}" 
+                                        Width="*"/>
+                    <DataGridTextColumn Header="Пароль"
+                                        Width="*"
+                                        Binding="{Binding password}"/>
+                    <DataGridTextColumn Header="Номер" 
+                                        Binding="{Binding number}" 
+                                        Width="*"/>
+                    <DataGridTextColumn Header="Роль" 
+                                        Binding="{Binding RoleName}" 
+                                        Width="80"/>
+                    <DataGridTextColumn Header="Статус" 
+                                        Binding="{Binding StatusText}" 
+                                        Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+        <Button Name="LogoutButton" 
+                Grid.Row="4"
+                Content="Выйти из системы" 
+                Height="40" 
+                FontSize="12"
+                Background="Beige" 
+                Foreground="RosyBrown"
+                Margin="0,0,0,10"
+                Cursor="Hand"
+                HorizontalAlignment="Center"
+                Width="150"
+                Click="Logout"/>
+    </Grid>
 </Window>

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:CarharingApp.Views"
         mc:Ignorable="d"
         Title="Добавить пользователя" Height="650" Width="500"
-        Background="AliceBlue">
+        Background="AliceBlue"
+                WindowStartupLocation="CenterScreen">
     <Grid Margin="30">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -14,37 +15,61 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="1">
-            <TextBlock Grid.Row="0"
+        <TextBlock Grid.Row="0"
                        Text="Добавить пользователя"
                        HorizontalAlignment="Center"
                        FontSize="30"
                        FontWeight="Bold"
                        Foreground="Aquamarine"
                        Margin="0,0,0,20"/>
+        <StackPanel Grid.Row="1">
             <TextBlock Text="ФИО пользователя"
                        Foreground="Aquamarine"
                        FontWeight="Bold"/>
-            <TextBox Name="FullName" Margin="0,1,5,20"/>
+            <TextBox Name="FullName" Margin="0,1,5,10"
+                     Height="25"/>
         </StackPanel>
         <StackPanel Grid.Row="2">
+            <TextBlock Text="Логин пользователя"
+                       Foreground="Aquamarine"
+                       Margin="0,0,0,0"          FontWeight="Bold"
+                       />
+            <TextBox Name="userlogin"
+                     Margin="0,1,5,10"
+                     Height="25"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3">
             <TextBlock Text="Номер пользователя"
                        Foreground="Aquamarine"
                        FontWeight="Bold"/>
-            <TextBox Name="number" Margin="0,1,5,20"/>
+            <TextBox Name="number" Margin="0,1,5,10"
+                     Height="25"/>
         </StackPanel>
-        <StackPanel Grid.Row="3">
+        <StackPanel Grid.Row="4">
             <TextBlock Text="Пароль"
                        Foreground="Aquamarine"
                        FontWeight="Bold"/>
             <TextBox Name="Password"
-                     Margin="0,1,5,30"/>
+                     Margin="0,1,5,30"
+                     Height="25"/>
 
         </StackPanel>
-        <Button Grid.Row="4"  Content="Добавить пользователя"
+        <Button Grid.Row="5"  Content="Добавить пользователя"
                 Foreground="RosyBrown"
-                Background="Beige"/>
+                Background="Beige"
+                Height="30"
+                Margin="5,10,5,0"/>
+        <Button Grid.Row="6"
+                Name="Out"
+                Content="Назад"
+                Margin="5,10,5,0"
+                Height="30"
+                Background="Beige"
+                Foreground="RosyBrown"
+                Click="Out2"/>
     </Grid>
 </Window>

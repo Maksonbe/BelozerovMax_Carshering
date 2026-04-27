@@ -23,5 +23,26 @@ namespace CarharingApp.Views
         {
             InitializeComponent();
         }
+
+        private void AddUser(object sender, RoutedEventArgs e)
+        {
+            AddUserPage addUserPage = new AddUserPage();
+            addUserPage.Show();
+
+            this.Close();
+
+        }
+        private void Logout(object sender, RoutedEventArgs e)
+        {
+            AuthPage authPage = new AuthPage();
+            authPage.Show();
+            this.Close();
+        }
+        private void UnBlock(object sender, RoutedEventArgs e)
+        {
+            UnblockUserPage unblockUserPage = new UnblockUserPage();
+            unblockUserPage.Show();
+            this.Close();
+        }
     }
 }

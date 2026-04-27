@@ -1,6 +1,6 @@
 ﻿using System.Windows;
-using CarsharingApp.Helpers;
-using CarsharingApp.Views;
+using CarharingApp.Helpers;
+using CarharingApp.Views;
 
 namespace CarsharingApp
 {
@@ -9,8 +9,10 @@ namespace CarsharingApp
         public MainWindow()
         {
             InitializeComponent();
-            NavigationHelper.MainFrame = MainFrame;
-            NavigationHelper.MainFrame.Navigate(new AuthPage());
+            CarharingApp.Views.AuthPage authPage = new CarharingApp.Views.AuthPage();
+            authPage.Show();
+            this.Close();
+
         }
     }
 }
