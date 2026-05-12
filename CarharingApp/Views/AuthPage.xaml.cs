@@ -30,7 +30,7 @@ namespace CarharingApp.Views
         }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            if (isPuzzleSolved)
+            if (!isPuzzleSolved)
             {
                 MessageBox.Show("Решите капчу!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
