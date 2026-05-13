@@ -19,13 +19,10 @@
       <EntityTypeMapping TypeName="CarsharingDBModel.Cars">
         <MappingFragment StoreEntitySet="Cars">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Brand" ColumnName="Brand" />
           <ScalarProperty Name="Model" ColumnName="Model" />
           <ScalarProperty Name="LicensePlate" ColumnName="LicensePlate" />
-          <ScalarProperty Name="Year" ColumnName="Year" />
           <ScalarProperty Name="PricePerHour" ColumnName="PricePerHour" />
           <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
           <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -47,10 +44,10 @@
         <MappingFragment StoreEntitySet="Reviews">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="CarId" ColumnName="CarId" />
           <ScalarProperty Name="Rating" ColumnName="Rating" />
           <ScalarProperty Name="Comment" ColumnName="Comment" />
           <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="CarId" ColumnName="CarId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -77,7 +74,7 @@
       <EntityTypeMapping TypeName="CarsharingDBModel.Users">
         <MappingFragment StoreEntitySet="Users">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Password" ColumnName="Password" />
@@ -88,6 +85,8 @@
           <ScalarProperty Name="FailedAttempts" ColumnName="FailedAttempts" />
           <ScalarProperty Name="LastVisit" ColumnName="LastVisit" />
           <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

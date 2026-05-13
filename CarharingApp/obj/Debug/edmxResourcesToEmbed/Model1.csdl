@@ -21,16 +21,12 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="LicensePlate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Year" Type="Int32" Nullable="false" />
     <Property Name="PricePerHour" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="ImageUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="CreatedAt" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Bookings" Relationship="Self.FK__Bookings__CarId__36B12243" FromRole="Cars" ToRole="Bookings" />
-    <NavigationProperty Name="Reviews" Relationship="Self.FK__Reviews__CarId__412EB0B6" FromRole="Cars" ToRole="Reviews" />
   </EntityType>
   <EntityType Name="Payments">
     <Key>
@@ -50,11 +46,10 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="Int32" Nullable="false" />
-    <Property Name="CarId" Type="Int32" Nullable="false" />
     <Property Name="Rating" Type="Int32" />
     <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="CreatedAt" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Cars" Relationship="Self.FK__Reviews__CarId__412EB0B6" FromRole="Reviews" ToRole="Cars" />
+    <Property Name="CarId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Users" Relationship="Self.FK__Reviews__UserId__403A8C7D" FromRole="Reviews" ToRole="Users" />
   </EntityType>
   <EntityType Name="Roles">
@@ -80,17 +75,19 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="RoleId" Type="Int32" Nullable="false" />
     <Property Name="IsLocked" Type="Boolean" Nullable="false" />
     <Property Name="IsFirstLogin" Type="Boolean" Nullable="false" />
     <Property Name="FailedAttempts" Type="Int32" Nullable="false" />
     <Property Name="LastVisit" Type="DateTime" Precision="3" />
     <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Bookings" Relationship="Self.FK__Bookings__UserId__35BCFE0A" FromRole="Users" ToRole="Bookings" />
     <NavigationProperty Name="Reviews" Relationship="Self.FK__Reviews__UserId__403A8C7D" FromRole="Users" ToRole="Reviews" />
     <NavigationProperty Name="Roles" Relationship="Self.FK__Users__RoleId__2C3393D0" FromRole="Users" ToRole="Roles" />
@@ -128,18 +125,6 @@
       </Principal>
       <Dependent Role="Payments">
         <PropertyRef Name="BookingId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Reviews__CarId__412EB0B6">
-    <End Role="Cars" Type="Self.Cars" Multiplicity="1" />
-    <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cars">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Reviews">
-        <PropertyRef Name="CarId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -186,10 +171,6 @@
     <AssociationSet Name="FK__Payments__Bookin__3B75D760" Association="Self.FK__Payments__Bookin__3B75D760">
       <End Role="Bookings" EntitySet="Bookings" />
       <End Role="Payments" EntitySet="Payments" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Reviews__CarId__412EB0B6" Association="Self.FK__Reviews__CarId__412EB0B6">
-      <End Role="Cars" EntitySet="Cars" />
-      <End Role="Reviews" EntitySet="Reviews" />
     </AssociationSet>
     <AssociationSet Name="FK__Reviews__UserId__403A8C7D" Association="Self.FK__Reviews__UserId__403A8C7D">
       <End Role="Users" EntitySet="Users" />

@@ -18,13 +18,10 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Brand" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="LicensePlate" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="Year" Type="int" Nullable="false" />
     <Property Name="PricePerHour" Type="decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="Status" Type="nvarchar" MaxLength="20" />
-    <Property Name="ImageUrl" Type="nvarchar" MaxLength="200" />
     <Property Name="CreatedAt" Type="datetime" />
   </EntityType>
   <EntityType Name="Payments">
@@ -44,10 +41,10 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
-    <Property Name="CarId" Type="int" Nullable="false" />
     <Property Name="Rating" Type="int" />
     <Property Name="Comment" Type="nvarchar" MaxLength="500" />
     <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CarId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Roles">
     <Key>
@@ -71,17 +68,19 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="RoleId" Type="int" Nullable="false" />
     <Property Name="IsLocked" Type="bit" Nullable="false" />
     <Property Name="IsFirstLogin" Type="bit" Nullable="false" />
     <Property Name="FailedAttempts" Type="int" Nullable="false" />
     <Property Name="LastVisit" Type="datetime" />
     <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK__Bookings__CarId__36B12243">
     <End Role="Cars" Type="Self.Cars" Multiplicity="1" />
@@ -116,18 +115,6 @@
       </Principal>
       <Dependent Role="Payments">
         <PropertyRef Name="BookingId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Reviews__CarId__412EB0B6">
-    <End Role="Cars" Type="Self.Cars" Multiplicity="1" />
-    <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Cars">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Reviews">
-        <PropertyRef Name="CarId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -174,10 +161,6 @@
     <AssociationSet Name="FK__Payments__Bookin__3B75D760" Association="Self.FK__Payments__Bookin__3B75D760">
       <End Role="Bookings" EntitySet="Bookings" />
       <End Role="Payments" EntitySet="Payments" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Reviews__CarId__412EB0B6" Association="Self.FK__Reviews__CarId__412EB0B6">
-      <End Role="Cars" EntitySet="Cars" />
-      <End Role="Reviews" EntitySet="Reviews" />
     </AssociationSet>
     <AssociationSet Name="FK__Reviews__UserId__403A8C7D" Association="Self.FK__Reviews__UserId__403A8C7D">
       <End Role="Users" EntitySet="Users" />

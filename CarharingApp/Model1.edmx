@@ -23,13 +23,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Brand" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LicensePlate" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Year" Type="int" Nullable="false" />
           <Property Name="PricePerHour" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Status" Type="nvarchar" MaxLength="20" />
-          <Property Name="ImageUrl" Type="nvarchar" MaxLength="200" />
           <Property Name="CreatedAt" Type="datetime" />
         </EntityType>
         <EntityType Name="Payments">
@@ -49,10 +46,10 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="CarId" Type="int" Nullable="false" />
           <Property Name="Rating" Type="int" />
           <Property Name="Comment" Type="nvarchar" MaxLength="500" />
           <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="CarId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -76,17 +73,19 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="RoleId" Type="int" Nullable="false" />
           <Property Name="IsLocked" Type="bit" Nullable="false" />
           <Property Name="IsFirstLogin" Type="bit" Nullable="false" />
           <Property Name="FailedAttempts" Type="int" Nullable="false" />
           <Property Name="LastVisit" Type="datetime" />
           <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK__Bookings__CarId__36B12243">
           <End Role="Cars" Type="Self.Cars" Multiplicity="1" />
@@ -121,18 +120,6 @@
             </Principal>
             <Dependent Role="Payments">
               <PropertyRef Name="BookingId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Reviews__CarId__412EB0B6">
-          <End Role="Cars" Type="Self.Cars" Multiplicity="1" />
-          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cars">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Reviews">
-              <PropertyRef Name="CarId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -180,10 +167,6 @@
             <End Role="Bookings" EntitySet="Bookings" />
             <End Role="Payments" EntitySet="Payments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reviews__CarId__412EB0B6" Association="Self.FK__Reviews__CarId__412EB0B6">
-            <End Role="Cars" EntitySet="Cars" />
-            <End Role="Reviews" EntitySet="Reviews" />
-          </AssociationSet>
           <AssociationSet Name="FK__Reviews__UserId__403A8C7D" Association="Self.FK__Reviews__UserId__403A8C7D">
             <End Role="Users" EntitySet="Users" />
             <End Role="Reviews" EntitySet="Reviews" />
@@ -219,16 +202,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LicensePlate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Year" Type="Int32" Nullable="false" />
           <Property Name="PricePerHour" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="ImageUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="CreatedAt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Bookings" Relationship="Self.FK__Bookings__CarId__36B12243" FromRole="Cars" ToRole="Bookings" />
-          <NavigationProperty Name="Reviews" Relationship="Self.FK__Reviews__CarId__412EB0B6" FromRole="Cars" ToRole="Reviews" />
         </EntityType>
         <EntityType Name="Payments">
           <Key>
@@ -248,11 +227,10 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="CarId" Type="Int32" Nullable="false" />
           <Property Name="Rating" Type="Int32" />
           <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="CreatedAt" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Cars" Relationship="Self.FK__Reviews__CarId__412EB0B6" FromRole="Reviews" ToRole="Cars" />
+          <Property Name="CarId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Reviews__UserId__403A8C7D" FromRole="Reviews" ToRole="Users" />
         </EntityType>
         <EntityType Name="Roles">
@@ -278,17 +256,19 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RoleId" Type="Int32" Nullable="false" />
           <Property Name="IsLocked" Type="Boolean" Nullable="false" />
           <Property Name="IsFirstLogin" Type="Boolean" Nullable="false" />
           <Property Name="FailedAttempts" Type="Int32" Nullable="false" />
           <Property Name="LastVisit" Type="DateTime" Precision="3" />
           <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Bookings" Relationship="Self.FK__Bookings__UserId__35BCFE0A" FromRole="Users" ToRole="Bookings" />
           <NavigationProperty Name="Reviews" Relationship="Self.FK__Reviews__UserId__403A8C7D" FromRole="Users" ToRole="Reviews" />
           <NavigationProperty Name="Roles" Relationship="Self.FK__Users__RoleId__2C3393D0" FromRole="Users" ToRole="Roles" />
@@ -326,18 +306,6 @@
             </Principal>
             <Dependent Role="Payments">
               <PropertyRef Name="BookingId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Reviews__CarId__412EB0B6">
-          <End Role="Cars" Type="Self.Cars" Multiplicity="1" />
-          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cars">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Reviews">
-              <PropertyRef Name="CarId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -385,10 +353,6 @@
             <End Role="Bookings" EntitySet="Bookings" />
             <End Role="Payments" EntitySet="Payments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reviews__CarId__412EB0B6" Association="Self.FK__Reviews__CarId__412EB0B6">
-            <End Role="Cars" EntitySet="Cars" />
-            <End Role="Reviews" EntitySet="Reviews" />
-          </AssociationSet>
           <AssociationSet Name="FK__Reviews__UserId__403A8C7D" Association="Self.FK__Reviews__UserId__403A8C7D">
             <End Role="Users" EntitySet="Users" />
             <End Role="Reviews" EntitySet="Reviews" />
@@ -422,13 +386,10 @@
             <EntityTypeMapping TypeName="CarsharingDBModel.Cars">
               <MappingFragment StoreEntitySet="Cars">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Brand" ColumnName="Brand" />
                 <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="LicensePlate" ColumnName="LicensePlate" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
                 <ScalarProperty Name="PricePerHour" ColumnName="PricePerHour" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -450,10 +411,10 @@
               <MappingFragment StoreEntitySet="Reviews">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="CarId" ColumnName="CarId" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -480,7 +441,7 @@
             <EntityTypeMapping TypeName="CarsharingDBModel.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
@@ -491,6 +452,8 @@
                 <ScalarProperty Name="FailedAttempts" ColumnName="FailedAttempts" />
                 <ScalarProperty Name="LastVisit" ColumnName="LastVisit" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

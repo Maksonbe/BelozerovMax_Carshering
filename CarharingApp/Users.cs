@@ -22,7 +22,7 @@ namespace CarharingApp
         }
     
         public int Id { get; set; }
-        public string FirstName { get; set; }
+        public string Login { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
@@ -33,6 +33,8 @@ namespace CarharingApp
         public int FailedAttempts { get; set; }
         public Nullable<System.DateTime> LastVisit { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
+        public string FullName { get; set; }
+        public string FirstName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bookings> Bookings { get; set; }

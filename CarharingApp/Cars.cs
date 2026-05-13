@@ -18,22 +18,16 @@ namespace CarharingApp
         public Cars()
         {
             this.Bookings = new HashSet<Bookings>();
-            this.Reviews = new HashSet<Reviews>();
         }
     
         public int Id { get; set; }
-        public string Brand { get; set; }
         public string Model { get; set; }
         public string LicensePlate { get; set; }
-        public int Year { get; set; }
         public decimal PricePerHour { get; set; }
         public string Status { get; set; }
-        public string ImageUrl { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bookings> Bookings { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reviews> Reviews { get; set; }
     }
 }
